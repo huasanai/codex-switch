@@ -13,6 +13,10 @@
 
 macOS · SwiftBar plugin · zero Swift · one-command install · one-click rollback　|　**macOS only (no Windows build yet)**
 
+<p align="center">
+  <img src="assets/codex-dropdown.png" alt="GPT, DeepSeek and Kimi together in the Codex model dropdown" width="420">
+</p>
+
 ---
 
 ## What & why
@@ -23,6 +27,10 @@ macOS · SwiftBar plugin · zero Swift · one-command install · one-click rollb
 > **OSS mode** — running **local** open models via `--oss` (Ollama / LM Studio). Smoothly plugging in a
 > **hosted third-party cloud API like DeepSeek** has no official switch and still needs a little
 > technique. CodexSwitch fills that gap.
+
+<p align="center">
+  <img src="assets/origin-tweet.png" alt="Origin: Tibo (@thsottiaux) tweet about using any open source model with Codex" width="540">
+</p>
 
 By default Codex App only talks to OpenAI's own models. CodexSwitch makes the same Codex model
 dropdown show GPT and third-party models side by side — without touching your ChatGPT login:
@@ -133,6 +141,23 @@ plugin into your SwiftBar plugin folder (auto-presets it on the non-sandboxed bu
 5. To go back to official native: click "Switch back to native GPT"
 
 > After toggling models / editing vendors, click "Restart Codex App" so Codex re-reads the model list.
+
+## Start / quit / restart (the menu-bar icon)
+
+CodexSwitch isn't a standalone app — it's **a SwiftBar plugin** + a background router, so all the on/off revolves around SwiftBar:
+
+| Goal | How |
+|---|---|
+| No icon after install / want to restart it | Launch SwiftBar: `open -a SwiftBar` in Terminal, or Spotlight (⌘Space) → "SwiftBar" |
+| Refresh the menu (no restart) | Click the icon → "Refresh menu" |
+| Temporarily hide the icon | Click the icon → "Disable Plugin" (this plugin only); or "SwiftBar → Quit" (quits all of SwiftBar) |
+| Show it again | `open -a SwiftBar` again; if you disabled the plugin, re-enable it in SwiftBar preferences, or re-run `bash setup.command` from your cloned `codex-switch` folder |
+| Launch at login | Click the icon → "SwiftBar" → Preferences → enable "Launch at Login" |
+
+> Two different "restarts": the menu's "Restart Codex App" restarts **Codex** (to apply model changes); this section is about **CodexSwitch (the menu-bar icon) itself**.
+> The background router only runs/stops automatically in multi-model mode — you don't manage it.
+>
+> ⚠️ Don't look for `setup.command` inside `~/.codex/codex-switch` (the runtime dir) — it lives in your **cloned source repo**.
 
 ## Multiple models per vendor & adding a vendor
 

@@ -12,6 +12,10 @@
 
 macOS · SwiftBar 插件 · 零 Swift · 一键安装 · 可一键回退　|　**目前仅支持 macOS（Windows 版未开发）**
 
+<p align="center">
+  <img src="assets/codex-dropdown.png" alt="Codex 模型下拉菜单中同时出现 GPT、DeepSeek、Kimi" width="420">
+</p>
+
 ---
 
 ## 这是什么 / 解决什么问题
@@ -21,6 +25,10 @@ macOS · SwiftBar 插件 · 零 Swift · 一键安装 · 可一键回退　|　*
 > 会发现：官方支持的是 **OSS mode**——通过 `--oss` 跑**本地**开源模型（Ollama / LM Studio）。
 > 想丝滑接入像 **DeepSeek 这类托管的第三方云 API**，官方并没有现成开关，仍需要一点技术手段。
 > CodexSwitch 正是来补这块。
+
+<p align="center">
+  <img src="assets/origin-tweet.png" alt="起源：Tibo（@thsottiaux）关于 Codex 可用任意开源模型的推特" width="540">
+</p>
 
 Codex App 默认只能用 OpenAI 自家模型。CodexSwitch 在不破坏你 ChatGPT 登录态的前提下，让同一个 Codex
 下拉菜单里同时出现 GPT 和第三方模型：
@@ -124,6 +132,23 @@ bash setup.command          # ← 最稳：不需要执行权限、不会被 Gat
 5. 想回官方原生：点「切回 GPT 原生模式」
 
 > 勾选模型 / 改厂商后，点菜单底部「重启 Codex App」让 Codex 重新读取模型列表。
+
+## 启动 / 退出 / 重启（菜单栏图标）
+
+CodexSwitch 不是独立 App——它是 **SwiftBar 里的一个插件** + 一个后台 router，所以"开关"都围绕 SwiftBar：
+
+| 想做的事 | 操作 |
+|---|---|
+| 装完没看到图标 / 想重新启动 | 启动 SwiftBar：终端 `open -a SwiftBar`，或 Spotlight（⌘空格）搜 "SwiftBar" 打开 |
+| 刷新菜单（不重启） | 点图标 → 「刷新菜单」 |
+| 暂时隐藏图标 | 点图标 → 底部「Disable Plugin」（只禁本插件）；或「SwiftBar → Quit」退出整个 SwiftBar |
+| 隐藏后再显示 | 重新 `open -a SwiftBar`；若是 Disable 了插件，去 SwiftBar 偏好设置重新启用，或重跑安装（进你 clone 的 `codex-switch` 文件夹跑 `bash setup.command`）|
+| 开机自动启动 | 点图标 →「SwiftBar」→ Preferences → 勾 Launch at Login |
+
+> 区分两个"重启"：菜单里的「重启 Codex App」是重启 **Codex**（让模型改动生效）；本节说的是 **CodexSwitch 这个菜单栏图标本身**。
+> 后台 router 只在「多模型模式」下由系统自动运行/停止，你不用手动管。
+>
+> ⚠️ 别在 `~/.codex/codex-switch`（运行目录）里找 `setup.command`——它在你 **clone 的源仓库**里。
 
 ## 同厂商多模型 & 加新厂商
 
