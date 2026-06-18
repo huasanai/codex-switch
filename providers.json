@@ -1,0 +1,62 @@
+{
+  "_comment": "第三方厂商注册表。加一家=加一条；同一家加模型=往 models 里加一条。GPT/OAuth 是特例，恒在，不在此列。",
+  "_fields": {
+    "id": "唯一标识",
+    "label": "菜单显示名",
+    "base_url": "OpenAI 兼容的 API 根地址（router 会拼 /chat/completions）",
+    "env_key": ".env 里存 key 的变量名",
+    "match_prefix": "model slug 以此前缀开头则路由到本厂商",
+    "verified": "base_url 是否已 curl 实测过",
+    "models": "[{slug, display_name, enabled}]，slug 必须是该厂商 API 真实模型名；enabled=true 才出现在 Codex 下拉菜单"
+  },
+  "providers": [
+    {
+      "id": "deepseek",
+      "label": "DeepSeek",
+      "base_url": "https://api.deepseek.com",
+      "env_key": "DEEPSEEK_API_KEY",
+      "match_prefix": "deepseek",
+      "verified": true,
+      "models": [
+        { "slug": "deepseek-v4-flash", "display_name": "DeepSeek V4 Flash", "enabled": true },
+        { "slug": "deepseek-v4-pro", "display_name": "DeepSeek V4 Pro", "enabled": false },
+        { "slug": "deepseek-chat", "display_name": "DeepSeek Chat", "enabled": false },
+        { "slug": "deepseek-reasoner", "display_name": "DeepSeek Reasoner", "enabled": false }
+      ]
+    },
+    {
+      "id": "kimi",
+      "label": "Kimi (Moonshot)",
+      "base_url": "https://api.moonshot.cn/v1",
+      "env_key": "KIMI_API_KEY",
+      "match_prefix": "kimi",
+      "verified": false,
+      "models": [
+        { "slug": "kimi-k2.6", "display_name": "Kimi K2.6", "enabled": false }
+      ]
+    },
+    {
+      "id": "zhipu",
+      "label": "智谱 GLM",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "env_key": "ZHIPU_API_KEY",
+      "match_prefix": "glm",
+      "verified": false,
+      "models": [
+        { "slug": "glm-4.6", "display_name": "GLM-4.6", "enabled": false }
+      ]
+    },
+    {
+      "id": "qwen",
+      "label": "通义 Qwen",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "env_key": "QWEN_API_KEY",
+      "match_prefix": "qwen",
+      "verified": false,
+      "models": [
+        { "slug": "qwen-plus", "display_name": "Qwen Plus", "enabled": false },
+        { "slug": "qwen-max", "display_name": "Qwen Max", "enabled": false }
+      ]
+    }
+  ]
+}

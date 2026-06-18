@@ -1,0 +1,9 @@
+# 密钥与运行产物，绝不提交
+.env
+*.log
+launchd.out.log
+launchd.err.log
+.DS_Store
+
+# 用户本地状态（部署目标里才有，源仓库不应含）
+multimodel-models.json
