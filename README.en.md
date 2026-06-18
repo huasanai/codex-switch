@@ -112,7 +112,7 @@ switch only when you need a third-party model.
 ## Install
 
 ```bash
-git clone <this-repo> codex-switch
+git clone https://github.com/huasanai/codex-switch.git codex-switch
 cd codex-switch             # enter the folder cloned in the line above (relative path; it's right here)
 bash setup.command          # ← most robust: no exec bit needed, not blocked by Gatekeeper
 ```
